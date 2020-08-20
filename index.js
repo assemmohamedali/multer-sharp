@@ -148,6 +148,7 @@ class MulterSharp {
       const gcName = typeof destination === 'string' && destination.length > 0
         ? `${destination}/${file.filename}`
         : file.filename;
+      if(!gcName) return cb(null)
       const gcFile = this.gcsBucket.file(gcName);
       gcFile.delete(cb);
     });
